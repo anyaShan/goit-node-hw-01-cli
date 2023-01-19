@@ -1,32 +1,41 @@
-// const fs = require("fs").promises;
+const fs = require("fs").promises;
 // const { nanoid } = require("nanoid");
 const path = require("path");
 
 const contactsPath = path.join(__dirname, "./db/contacts.json");
-console.log(contactsPath);
+// const contactsPath = `${__dirname}/db/contacts.json`;
+// console.log(contactsPath);
 
 const listContacts = async () => {
-  // ...твій код
+  const result = await fs.readFile(contactsPath, "utf-8");
+  //   const result = await fs.readFile(contactsPath);
+  //   const text = result.toString();
+  return JSON.parse(result);
 };
 
 const getContactById = async (contactId) => {
-  // ...твій код
+  const contacts = await listContacts();
+  const result = contacts.find((item) => item.id === contactId);
+
+  return result || null;
 };
 
-const removeContact = async (contactId) => {
-  // ...твій код
-};
+// const removeContact = async (contactId) => {
+//   // ...твій код
+// };
 
-const addContact = (name, email, phone) => {
-  // ...твій код
-};
+// const addContact = (name, email, phone) => {
+//   // ...твій код
+// };
 
 module.exports = {
   listContacts,
   getContactById,
-  removeContact,
-  addContact,
+  //   removeContact,
+  //   addContact,
 };
+
+listContacts();
 
 // -------------------------------------------------------
 
