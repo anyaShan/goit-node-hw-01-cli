@@ -1,0 +1,25 @@
+{
+  "name": "goit-node-hw-01-cli",
+  "version": "0.0.1",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index",
+    "start:dev": "nodemon index"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/anyaShan/goit-node-hw-01-cli.git"
+  },
+  "keywords": [],
+  "author": "Anna Shanaida <anya.shanaida@yahoo.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/anyaShan/goit-node-hw-01-cli/issues"
+  },
+  "homepage": "https://github.com/anyaShan/goit-node-hw-01-cli#readme",
+  "devDependencies": {
+    "nodemon": "^2.0.20"
+  }
+}
