@@ -1,5 +1,17 @@
-const { nanoid } = require("nanoid");
 const contacts = require("./contacts");
+
+const { Command } = require("commander");
+const program = new Command();
+program
+  .option("-a, --action <type>", "choose action")
+  .option("-i, --id <type>", "user id")
+  .option("-n, --name <type>", "user name")
+  .option("-e, --email <type>", "user email")
+  .option("-p, --phone <type>", "user phone");
+
+program.parse(process.argv);
+
+const argv = program.opts();
 
 const invokeAction = async ({ action, id, name, email, phone }) => {
   switch (action) {
@@ -28,6 +40,10 @@ const invokeAction = async ({ action, id, name, email, phone }) => {
   }
 };
 
+invokeAction(argv);
+
+// ------------------------------------------------------
+
 // invokeAction({ action: "list" });
 // invokeAction({ action: "get", id: "5" });
 // invokeAction({
@@ -36,4 +52,4 @@ const invokeAction = async ({ action, id, name, email, phone }) => {
 //   email: "mango@gmail.com",
 //   phone: "322-22-22",
 // });
-invokeAction({ action: "remove", id: "gPBsZ0NbpEvv9F5LXiXXE" });
+// invokeAction({ action: "remove", id: "gPBsZ0NbpEvv9F5LXiXXE" });
