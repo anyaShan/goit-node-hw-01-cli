@@ -1,3 +1,4 @@
+const { nanoid } = require("nanoid");
 const contacts = require("./contacts");
 
 const invokeAction = async ({ action, id, name, email, phone }) => {
@@ -9,20 +10,30 @@ const invokeAction = async ({ action, id, name, email, phone }) => {
 
     case "get":
       const oneContact = await contacts.getContactById(id);
-      console.log(oneContact);
+      console.table(oneContact);
       break;
 
-    // case "add":
-    //   // ... name email phone
-    //   break;
+    case "add":
+      const newContact = await contacts.addContact({ id, name, email, phone });
+      console.table(newContact);
+      break;
 
-    // case "remove":
-    //   // ... id
-    //   break;
+    case "remove":
+      const deletedContact = await contacts.removeContact(id);
+      console.table(deletedContact);
+      break;
 
     default:
       console.warn("\x1B[31m Unknown action type!");
   }
 };
 
-invokeAction({ action: "get", id: "1" });
+// invokeAction({ action: "list" });
+// invokeAction({ action: "get", id: "5" });
+// invokeAction({
+//   action: "add",
+//   name: "Mango",
+//   email: "mango@gmail.com",
+//   phone: "322-22-22",
+// });
+invokeAction({ action: "remove", id: "gPBsZ0NbpEvv9F5LXiXXE" });
